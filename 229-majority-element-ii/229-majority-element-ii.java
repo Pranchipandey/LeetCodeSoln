@@ -3,9 +3,9 @@ class Solution {
          ArrayList res= new ArrayList<>();
         Arrays.sort(nums);
       
-         int count=0;
+       int count=0;
         for(int i =0;i<nums.length;i+=count){
-           count =0;
+            count=0;
             for(int j=i;j<nums.length;j++){
                 if(nums[j]==nums[i]){
                    
