@@ -35,41 +35,34 @@ class Solution
     //Function to sort an array using quick sort algorithm.
     static void quickSort(int arr[], int low, int high)
     {
-         if(low<high){
-  int pivot = partition(arr,low,high);
-  quickSort(arr,low,pivot-1);
-   quickSort(arr,pivot+1,high);
+      if(low<high){
+          int pivot = partition(arr,low,high);
+          quickSort(arr,low,pivot-1);
+          quickSort(arr,pivot+1,high);
+      }  
   
-}
-    }
+   }
+    
    
     static int partition(int arr[], int low, int high)
     {
-         int pivot = arr[high];
-        //Index of smaller element and indicates the right position of 
-        //pivot found so far.
-        int i = (low-1); 
-        for (int j=low; j<=high-1; j++)
-        {
-            //If current element is smaller than or equal to pivot we increment
-            //the value of i and swap the values at ith and jth index.
-            if (arr[j] <= pivot)
-            {
-                i++;
-                //Swapping of values at ith and jth index.
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-        //At last, swapping of value at ith and the last index which was
-        //selected as pivot.
-        int temp = arr[i+1];
-        arr[i+1] = arr[high];
-        arr[high] = temp;
-        
-        //returning the partitioning index. 
-        return i+1;
-    } }
+       int pivot=arr[low];
+       int i=low;
+       int j =high;
+       while(i<j){
+           while(arr[i]<=pivot && i<=high-1)i++;
+           while(arr[j]>pivot && j>=low)j--;
+           if(i<j){
+               int temp=arr[i];
+               arr[i]=arr[j];
+               arr[j]=temp;
+           }
+       }
+           int temp = arr[low];
+           arr[low]=arr[j];
+           arr[j] = temp;
+         return j;  
+    }
+    }
 
 
